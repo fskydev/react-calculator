@@ -10,7 +10,11 @@ const operators = [
 ]
 
 const OperatorBox = ({operator, setOperator}) => {
-	const [selectedOperator, setSelectedOperator] = useState(operators.find(o => o.label === operator))
+	const [selectedOperator, setSelectedOperator] = useState(operators[0])
+
+	useEffect(() => {
+		setSelectedOperator(operators.find(o => o.label === operator))
+	}, [operator])
 
 	useEffect(() => {
 		setOperator(selectedOperator.label)

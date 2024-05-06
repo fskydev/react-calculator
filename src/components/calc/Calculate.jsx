@@ -7,9 +7,9 @@ dayjs.extend(utc)
 const CalculateSection = () => {
 	const [valueA, setValueA] = useState(0)
 	const [valueB, setValueB] = useState(0)
-	const [operator, setOperator] = useState('-')
+	const [operator, setOperator] = useState('+')
+
 	const [result, setResult] = useState(0)
-	
 	const [resultArr, setResultArr] = useState([])
 
 	useEffect(() => {
@@ -41,8 +41,13 @@ const CalculateSection = () => {
 	}
 
 	const handleClear = () => {
-		console.log('-- handleClear called')
-		// console.log({operator})
+		setValueA(0)
+		setValueB(0)
+
+		setOperator('+')
+
+		setResult(0)
+		setResultArr([])
 	}
 
 	return <div className='flex flex-col gap-2'>
@@ -53,7 +58,7 @@ const CalculateSection = () => {
 				value={valueA}
 				onChange={e => setValueA(e.target.value)}
 			/>
-			<OperatorBox operator={operator} setOperator={setOperator}/>
+			<OperatorBox operator={operator} setOperator={setOperator} />
 			<input
 				className='text-black p-2 rounded'
 				type='number'
