@@ -1,4 +1,4 @@
-import { useState, Fragment } from 'react'
+import { useState, Fragment, useEffect } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/24/solid'
 
@@ -9,8 +9,12 @@ const operators = [
 	{ id: 4, label: '/' },
 ]
 
-const OperatorBox = () => {
-	const [selectedOperator, setSelectedOperator] = useState(operators[0])
+const OperatorBox = ({operator, setOperator}) => {
+	const [selectedOperator, setSelectedOperator] = useState(operators.find(o => o.label === operator))
+
+	useEffect(() => {
+		setOperator(selectedOperator.label)
+	}, [selectedOperator])
 
 	return <div className=''>
 		<Listbox value={selectedOperator} onChange={setSelectedOperator}>
