@@ -13,10 +13,6 @@ const CalculateSection = () => {
 	const [result, setResult] = useState(0)
 	const [resultArr, setResultArr] = useState([])
 
-	useEffect(() => {
-		console.log(resultArr)
-	}, [resultArr])
-
 	const handleCalc = () => {
 		let r
 		switch (operator) {
